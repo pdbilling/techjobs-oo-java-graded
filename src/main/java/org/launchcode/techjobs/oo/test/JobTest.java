@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo.test;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -28,18 +29,18 @@ public class JobTest {
         assertTrue(job1.getLocation() instanceof Location);
         assertTrue(job1.getPositionType() instanceof PositionType);
         assertTrue(job1.getCoreCompetency() instanceof CoreCompetency);
-        assertEquals(job1.getName(), "Product tester");
-        assertEquals(job1.getEmployer(), "ACME");
-        assertEquals(job1.getLocation(), "Desert");
-        assertEquals(job1.getPositionType(), "Quality control");
-        assertEquals(job1.getCoreCompetency(), "Persistence");
+        assertEquals("Product tester", job1.getName());
+        assertEquals("ACME", job1.getEmployer());
+        assertEquals("Desert", job1.getLocation());
+        assertEquals("Quality control", job1.getPositionType());
+        assertEquals("Persistence", job1.getCoreCompetency());
     }
 
     @Test
     public void testJobsForEquality(){
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertEquals(job1.getId(), job2.getId());
+        assertFalse(job1.getId() == job2.getId());
     }
 
 }
