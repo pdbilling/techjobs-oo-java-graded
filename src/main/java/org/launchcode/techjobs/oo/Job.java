@@ -2,11 +2,10 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
-public class Job {
+public class Job <jobObject> {
 
     private int id;
     private static int nextId = 1;
-    private String value;
     private String name;
     private Employer employer;
     private Location location;
@@ -50,10 +49,6 @@ public class Job {
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
-    public String getValue() { return value; }
-
-    public void setValue(String value) { this.value = value; }
-
     public String getName() {
         return name;
     }
@@ -96,5 +91,39 @@ public class Job {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        String noData = "Data not available";
+        String empty = "";
+        String aName;
+        String aEmployer;
+        String aLocation;
+        String aPositionType;
+        String aCoreCompetency;
+        if(name == null){
+            name = noData;
+        }
+        if(employer == null || employer.getValue() == empty){
+            aEmployer = noData;
+        } else { aEmployer = employer.getValue(); }
+        if(location == null || location.getValue() == empty){
+            aLocation = noData;
+        } else { aLocation = location.getValue(); }
+        if(positionType == null || positionType.getValue() == empty){
+            aPositionType = noData;
+        } else { aPositionType = positionType.getValue(); }
+        if(coreCompetency == null || coreCompetency.getValue() == empty){
+            aCoreCompetency = noData;
+        } else { aCoreCompetency = coreCompetency.getValue(); }
+        String labels = "\nID: " + id +
+                "\nName: " + name +
+                "\nEmployer: " + aEmployer +
+                "\nLocation: " + aLocation +
+                "\nPosition Type: " + aPositionType +
+                "\nCore Competency: " + aCoreCompetency +
+                "\n";
+        return labels;
     }
 }
